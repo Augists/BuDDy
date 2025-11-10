@@ -1,5 +1,21 @@
-build/*
-.vscode/*
-Win32/*
-x64/*
+# Autotools/CMake artifacts
+/autom4te.cache/
+/build/
+/config.log
+/config.status
+/libtool
+/stamp-h1
 
+# Generated directories
+/.deps/
+/.libs/
+/src/.deps/
+/src/.libs/
+/doc/.deps/
+/doc/.libs/
+
+# Example build outputs
+/examples/**/.deps/
+/examples/**/.libs/
+/examples/**/queen
+/examples/**/result

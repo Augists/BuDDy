@@ -26,6 +26,7 @@
      
 **************************************************************************/
 #include <stdlib.h>
+#include <iostream>
 #include "bdd.h"
 
 int N;                /* Size of the chess board */
@@ -114,21 +115,35 @@ int main(int ac, char **av)
       queen &= e;
    }
    
+   const bool show_progress = getenv("BUDDY_NQUEENS_PROGRESS") != nullptr;
+
       /* Build requirements for each variable(field) */
    for (i=0 ; i<N ; i++)
       for (j=0 ; j<N ; j++)
        {
-	  cout << "Adding position " << i << "," << j << "\n" << flush;
+          if (show_progress)
+             cout << "Adding position " << i << "," << j << "\n" << flush;
 	  build(i,j);
        }
 
       /* Print the results */
-   cout << "There are " << bdd_satcount(queen) << " solutions\n";
+   const double solutions = bdd_satcount(queen);
+   cout << "There are " << solutions << " solutions\n";
    cout << "one is:\n";
    bdd solution = bdd_satone(queen);
    cout << bddset << solution << endl;
 
+   bddStat stats;
+   bdd_stats(&stats);
+   cout << "NQUEENS_METRICS n=" << N
+        << " solutions=" << solutions
+        << " nodes=" << stats.produced << "\n";
+
    bdd_done();
+
+   for (i=0 ; i<N ; i++)
+      delete [] X[i];
+   delete [] X;
    
    return 0;
 }
