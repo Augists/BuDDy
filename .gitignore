@@ -19,3 +19,9 @@
 /examples/**/.libs/
 /examples/**/queen
 /examples/**/result
+
+# Object files and libraries
+*.o
+*.lo
+*.la
+*.a
