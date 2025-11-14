@@ -25,3 +25,17 @@
 *.lo
 *.la
 *.a
+
+Makefile
+config.h
+doc/Makefile
+examples/Makefile
+examples/adder/Makefile
+examples/bddcalc/Makefile
+examples/bddtest/Makefile
+examples/cmilner/Makefile
+examples/fdd/Makefile
+examples/milner/Makefile
+examples/money/Makefile
+examples/solitare/Makefile
+src/Makefile
