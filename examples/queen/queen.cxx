@@ -135,9 +135,11 @@ int main(int ac, char **av)
 
    bddStat stats;
    bdd_stats(&stats);
+   int alive = bdd_nodecount(queen);
    cout << "NQUEENS_METRICS n=" << N
         << " solutions=" << solutions
-        << " nodes=" << stats.produced << "\n";
+        << " nodes_created=" << stats.produced
+        << " nodes_alive=" << alive << "\n";
 
    bdd_done();
 
